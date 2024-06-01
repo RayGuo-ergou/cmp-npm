@@ -69,6 +69,39 @@ e.g. `ignore = { 'beta', 'rc' }`.
   the `major.minor.patch` schema.
 - `only_latest_version` (Boolean): If `true`, will only show latest release version.
 
+### Highlighting & Icon
+
+Npm's cmp source creates highlight group `CmpItemKindNpm`. To add an icon for lspkind, add the icon to your lspkind symbol map.
+
+#### Option 1
+
+```lua
+-- lspkind.lua
+local lspkind = require("lspkind")
+lspkind.init({
+  symbol_map = {
+    Npm = " ",
+  },
+})
+
+vim.api.nvim_set_hl(0, "CmpItemKindNpm", {fg ="#BD93F9"})
+```
+
+#### Option 2
+
+```lua
+-- cmp.lua
+cmp.setup {
+  ...
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = "symbol",
+      symbol_map = { Npm = " " }
+    })
+  }
+  ...
+}
+```
 
 ## Limitations
 

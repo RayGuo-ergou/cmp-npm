@@ -79,7 +79,13 @@ function source:complete(params, callback)
                 end
               end
 
-              table.insert(items, { label = version })
+              table.insert(items, {
+                label = version,
+                cmp = {
+                  kind_hl_group = "CmpItemKindNpm",
+                  kind_text = "Npm",
+                },
+              })
 
               ::continue::
             end
