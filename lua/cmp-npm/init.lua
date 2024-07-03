@@ -38,6 +38,7 @@ function source:complete(params, callback)
   if name == nil then
     return
   end
+  -- TODO: use https://github.com/antfu/fast-npm-meta to boost the performance
   if find_version then
     if opts.only_latest_version then
       Job:new({
